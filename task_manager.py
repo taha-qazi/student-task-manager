@@ -44,10 +44,50 @@ class TaskManager:
         return "\n".join(lines)
 
     # --- add-task section ------------------------------------------------
-    # Implemented on the feature/add-task branch.
+    def add_task(self, title):
+        """Add a new task and return it.
+
+        The title is stripped of surrounding whitespace. An empty or
+        whitespace-only title is rejected with ``ValueError`` so blank
+        tasks can never enter the list.
+        """
+        cleaned = (title or "").strip()
+        if not cleaned:
+            raise ValueError("Task title cannot be empty.")
+        task = Task(id=self._next_id, title=cleaned)
+        self._next_id += 1
+        self.tasks.append(task)
+        return task
 
     # --- complete-task section -------------------------------------------
-    # Implemented on the feature/complete-task branch.
+    def find_task(self, task_id):
+        """Return the task with ``task_id``, or ``None`` if there is none."""
+        for task in self.tasks:
+            if task.id == task_id:
+                return task
+        return None
+
+    def complete_task(self, task_id):
+        """Mark the selected task as completed.
+
+        Returns ``True`` when a task was found and marked, ``False``
+        when no task has the given ID.
+        """
+        task = self.find_task(task_id)
+        if task is None:
+            return False
+        task.completed = True
+        return True
 
     # --- delete-task section ---------------------------------------------
-    # Implemented on the feature/delete-task branch.
+    def delete_task(self, task_id):
+        """Delete the task with the given ID.
+
+        Only a valid, existing ID deletes anything. Returns ``True``
+        when a task was removed, ``False`` when no task has that ID.
+        """
+        for index, task in enumerate(self.tasks):
+            if task.id == task_id:
+                del self.tasks[index]
+                return True
+        return False

@@ -1,0 +1,31 @@
+*   addef56 Merge branch 'update-status-review' into main — resolve status line conflict
+|\  
+| * d7ad353 Update project status to Under Review
+* | 12c5f0e Update project status to In Development
+|/  
+* 7af356e Add project status line to README
+*   a7ee56a Merge pull request #9 from taha-qazi/feature/delete-task
+|\  
+| * 3b2c9db Wire delete task into the console menu with ID checks
+| * 49c3dac Implement delete_task by valid task ID
+* |   40bb73d Merge pull request #8 from taha-qazi/feature/complete-task
+|\ \  
+| * | 49abf94 Wire complete task into the console menu with ID checks
+| * | 7e5a2a7 Implement complete_task for a selected task ID
+| |/  
+* |   fa1bc0a Merge pull request #7 from taha-qazi/feature/add-task
+|\ \  
+| |/  
+|/|   
+| * 0a5d99d Wire add task into the console menu with validation messages
+| * 4b7a240 Implement add_task with empty-title validation
+|/  
+| * 420f233 Add lab report and evidence checklist
+| * b6b9899 Add full README and user guide documentation
+|/  
+| * b328b40 Add unit tests and GitHub Actions CI workflow
+|/  
+* ab3c312 Add console menu skeleton with display and exit
+* 553cd3f Add display tasks functionality
+* b6dc480 Add core Task model and TaskManager store
+* ab4df55 Initial commit: README, Python .gitignore and MIT LICENSE

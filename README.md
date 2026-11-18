@@ -4,6 +4,8 @@ A Python console-based Student Task Manager, built for **CSC418 — DevOps for C
 
 The app lets a student add, display, complete and delete study tasks from the terminal. The project was built incrementally to demonstrate a realistic Git & GitHub workflow: progressive commits, feature branches, Issues, Pull Requests, a deliberately created and resolved merge conflict, CI with GitHub Actions, and a tagged release.
 
+Project status: In Development (under review)
+
 ## Features
 
 - **Add tasks** — with input validation: empty or whitespace-only titles are rejected

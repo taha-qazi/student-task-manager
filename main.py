@@ -23,19 +23,40 @@ def main():
         choice = input("Choose an option (1-5): ").strip()
 
         if choice == "1":
-            # add-task hook — implemented on the feature/add-task branch
-            print("Add task is not available yet.")
+            title = input("Enter task title: ")
+            try:
+                task = manager.add_task(title)
+            except ValueError as error:
+                print(f"Error: {error}")
+            else:
+                print(f"Task added with ID {task.id}.")
 
         elif choice == "2":
             print(manager.display_tasks())
 
         elif choice == "3":
-            # complete-task hook — implemented on the feature/complete-task branch
-            print("Complete task is not available yet.")
+            raw_id = input("Enter the ID of the task to complete: ").strip()
+            try:
+                task_id = int(raw_id)
+            except ValueError:
+                print("Error: task ID must be a number.")
+            else:
+                if manager.complete_task(task_id):
+                    print(f"Task {task_id} marked as completed.")
+                else:
+                    print(f"No task found with ID {task_id}.")
 
         elif choice == "4":
-            # delete-task hook — implemented on the feature/delete-task branch
-            print("Delete task is not available yet.")
+            raw_id = input("Enter the ID of the task to delete: ").strip()
+            try:
+                task_id = int(raw_id)
+            except ValueError:
+                print("Error: task ID must be a number.")
+            else:
+                if manager.delete_task(task_id):
+                    print(f"Task {task_id} deleted.")
+                else:
+                    print(f"No task found with ID {task_id}.")
 
         elif choice == "5":
             print("Goodbye!")
