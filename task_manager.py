@@ -60,7 +60,24 @@ class TaskManager:
         return task
 
     # --- complete-task section -------------------------------------------
-    # Implemented on the feature/complete-task branch.
+    def find_task(self, task_id):
+        """Return the task with ``task_id``, or ``None`` if there is none."""
+        for task in self.tasks:
+            if task.id == task_id:
+                return task
+        return None
+
+    def complete_task(self, task_id):
+        """Mark the selected task as completed.
+
+        Returns ``True`` when a task was found and marked, ``False``
+        when no task has the given ID.
+        """
+        task = self.find_task(task_id)
+        if task is None:
+            return False
+        task.completed = True
+        return True
 
     # --- delete-task section ---------------------------------------------
     # Implemented on the feature/delete-task branch.
