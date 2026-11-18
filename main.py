@@ -23,8 +23,13 @@ def main():
         choice = input("Choose an option (1-5): ").strip()
 
         if choice == "1":
-            # add-task hook — implemented on the feature/add-task branch
-            print("Add task is not available yet.")
+            title = input("Enter task title: ")
+            try:
+                task = manager.add_task(title)
+            except ValueError as error:
+                print(f"Error: {error}")
+            else:
+                print(f"Task added with ID {task.id}.")
 
         elif choice == "2":
             print(manager.display_tasks())

@@ -44,7 +44,20 @@ class TaskManager:
         return "\n".join(lines)
 
     # --- add-task section ------------------------------------------------
-    # Implemented on the feature/add-task branch.
+    def add_task(self, title):
+        """Add a new task and return it.
+
+        The title is stripped of surrounding whitespace. An empty or
+        whitespace-only title is rejected with ``ValueError`` so blank
+        tasks can never enter the list.
+        """
+        cleaned = (title or "").strip()
+        if not cleaned:
+            raise ValueError("Task title cannot be empty.")
+        task = Task(id=self._next_id, title=cleaned)
+        self._next_id += 1
+        self.tasks.append(task)
+        return task
 
     # --- complete-task section -------------------------------------------
     # Implemented on the feature/complete-task branch.
