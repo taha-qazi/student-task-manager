@@ -50,4 +50,14 @@ class TaskManager:
     # Implemented on the feature/complete-task branch.
 
     # --- delete-task section ---------------------------------------------
-    # Implemented on the feature/delete-task branch.
+    def delete_task(self, task_id):
+        """Delete the task with the given ID.
+
+        Only a valid, existing ID deletes anything. Returns ``True``
+        when a task was removed, ``False`` when no task has that ID.
+        """
+        for index, task in enumerate(self.tasks):
+            if task.id == task_id:
+                del self.tasks[index]
+                return True
+        return False
