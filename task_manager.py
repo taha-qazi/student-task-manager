@@ -29,6 +29,20 @@ class TaskManager:
         """Return all tasks, in the order they were added."""
         return list(self.tasks)
 
+    @staticmethod
+    def format_task(task):
+        """Render one task as a single line, e.g. ``[x] 2. Buy books``."""
+        checkbox = "[x]" if task.completed else "[ ]"
+        return f"{checkbox} {task.id}. {task.title}"
+
+    def display_tasks(self):
+        """Return a printable listing of all tasks (or an empty note)."""
+        if not self.tasks:
+            return "No tasks yet. Add one to get started!"
+        lines = ["Your tasks:"]
+        lines.extend(self.format_task(task) for task in self.tasks)
+        return "\n".join(lines)
+
     # --- add-task section ------------------------------------------------
     # Implemented on the feature/add-task branch.
 
