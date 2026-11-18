@@ -30,8 +30,7 @@ class TestTaskManager(unittest.TestCase):
         result = self.manager.complete_task(task.id)
         self.assertTrue(result)
         self.assertTrue(task.completed)
-        # Intentional wrong expectation (uppercase [X] instead of [x]) to demonstrate failed CI run
-        self.assertEqual(self.manager.format_task(task), "[X] 1. Prepare DevOps lab")
+        self.assertEqual(self.manager.format_task(task), "[x] 1. Prepare DevOps lab")
 
     def test_complete_task_invalid_id_returns_false(self):
         self.manager.add_task("Read Git documentation")
